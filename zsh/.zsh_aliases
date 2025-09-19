@@ -1,0 +1,52 @@
+alias work="cd ~/Code"
+
+alias mfs="php artisan migrate:fresh --seed"
+
+alias nah="git reset --hard && git clean -df"
+
+alias gad="git add ."
+
+alias gs="git status"
+
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+alias art="php artisan"
+
+alias pest="vendor/bin/pest"
+
+alias pf="pest --filter"
+
+alias pp="pest --parallel"
+
+alias amend="git commit --amend -m"
+
+alias gpo="git push origin"
+
+unalias c 2>/dev/null
+c() {
+  if [ $# -eq 0 ]; then
+    code .
+  else
+    code "$@"
+  fi
+}
+
+unalias gc 2>/dev/null
+gc() {
+  git commit -m "$*"
+}
+
+unalias gpo 2>/dev/null
+gpo() {
+  if [ $# -eq 0 ]; then
+    branch=$(git rev-parse --abbrev-ref HEAD)
+    git push origin "$branch"
+  else
+    if [[ $1 == -* ]]; then
+      branch=$(git rev-parse --abbrev-ref HEAD)
+      git push origin "$branch" "$@"
+    else
+      git push origin "$@"
+    fi
+  fi
+}
