@@ -18,6 +18,8 @@ alias pf="pest --filter"
 
 alias pp="pest --parallel"
 
+alias pint="vendor/bin/pint"
+
 alias amend="git commit --amend -m"
 
 alias gpo="git push origin"
