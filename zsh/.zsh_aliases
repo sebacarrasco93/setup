@@ -22,9 +22,6 @@ alias pint="vendor/bin/pint"
 
 alias amend="git commit --amend -m"
 
-alias gpo="git push origin"
-
-unalias c 2>/dev/null
 c() {
   if [ $# -eq 0 ]; then
     code .
@@ -33,12 +30,10 @@ c() {
   fi
 }
 
-unalias gc 2>/dev/null
 gc() {
   git commit -m "$*"
 }
 
-unalias gpo 2>/dev/null
 gpo() {
   if [ $# -eq 0 ]; then
     branch=$(git rev-parse --abbrev-ref HEAD)
