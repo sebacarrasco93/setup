@@ -94,3 +94,6 @@ if [ -n "$fish_path" ]; then
 fi
 
 curl https://raw.githubusercontent.com/sebacarrasco93/my-setup/main/macOS-fish | fish
+
+echo "Adding Herd to PATH"
+echo 'export PATH="$HOME/Library/Application Support/Herd/bin:$PATH"' >> ~/.zshrc
