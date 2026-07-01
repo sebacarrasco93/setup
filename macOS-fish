@@ -88,8 +88,17 @@ echo "amend"
 alias amend="git commit --amend -m"
 funcsave amend
 
-echo "gpo"
-alias gpo="git push origin"
+function gpo --wraps='git push origin'
+    if test (count $argv) -eq 0
+        set branch (git rev-parse --abbrev-ref HEAD)
+        git push origin $branch
+    else if string match -q -- '-*' $argv[1]
+        set branch (git rev-parse --abbrev-ref HEAD)
+        git push origin $branch $argv
+    else
+        git push origin $argv
+    end
+end
 funcsave gpo
 
 echo "Opening fish config. You can close after customizing"
