@@ -56,6 +56,18 @@ function pf
     end
 funcsave pf
 
+function gcl
+    set branch dev
+
+    if test (count $argv) -gt 0
+        set branch $argv[1]
+    end
+
+    git checkout $branch
+    and git pull origin $branch
+end
+funcsave gcl
+
 echo "phpunit"
 alias phpunit="vendor/bin/phpunit"
 funcsave phpunit
